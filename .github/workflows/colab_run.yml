@@ -1,0 +1,28 @@
+name: Run Colab Notebook Automatically
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # 毎日7時（UTC）に実行
+  workflow_dispatch:  # 手動で実行する場合にも対応
+
+jobs:
+  run_colab_notebook:
+    runs-on: ubuntu-latest  # 実行環境
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # リポジトリのコードを取得
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install nbconvert
+
+      - name: Run Colab Notebook
+        run: |
+          jupyter nbconvert --to notebook --execute your_notebook.ipynb
