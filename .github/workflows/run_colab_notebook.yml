@@ -1,0 +1,32 @@
+name: Run Colab Notebook Automatically
+
+on:
+  workflow_dispatch:  # 手動実行のトリガー設定
+    inputs:
+      query:
+        description: 'Enter PubMed search query'
+        required: true
+        default: 'RNA splicing'  # デフォルトの検索キーワード
+
+jobs:
+  run_colab_notebook:
+    runs-on: ubuntu-latest  # 実行環境
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # リポジトリのコードを取得
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # 使用するPythonのバージョンを指定
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install google-colab requests openpyxl
+
+      - name: Run Colab Notebook
+        run: |
+          # Colabノートブックを実行するスクリプトを記述
+          python3 run_colab_notebook.py  # Colabノートブックを実行するPythonスクリプト
