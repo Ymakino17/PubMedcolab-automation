@@ -24,6 +24,7 @@ jobs:
           pip install nbconvert notebook
           python -m ipykernel install --user --name=python3
 
-      - - name: Run Python Script
-  run: pubmed_monitoring.py
+      - name: Run Python Script
+        run: python pubmed_monitoring.py
+
 
