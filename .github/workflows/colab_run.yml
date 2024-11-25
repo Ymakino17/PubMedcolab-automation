@@ -25,4 +25,5 @@ jobs:
 
       - name: Run Colab Notebook
         run: |
-          jupyter nbconvert --to notebook --execute PubMed-monitoring.ipynb
+          jupyter nbconvert --to notebook --execute PubMedcolab-automation
+/PubMed_monitoring.ipynb
