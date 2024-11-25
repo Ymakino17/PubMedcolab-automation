@@ -24,6 +24,6 @@ jobs:
           pip install nbconvert notebook
           python -m ipykernel install --user --name=python3
 
-      - name: Run Colab Notebook
-        run: |
-          jupyter nbconvert --to notebook --execute PubMed_monitoring.ipynb
+      - - name: Run Python Script
+  run: pubmed_monitoring.py
+
